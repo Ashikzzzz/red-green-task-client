@@ -6,7 +6,7 @@ const CreateNewList = () => {
 
   const onSubmit = (data) => console.log(data);
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen bg-white">
       <h2 className="text-2xl lg:text-2xl text-center">Create a New List</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-xs">
         <div className="form-control">
