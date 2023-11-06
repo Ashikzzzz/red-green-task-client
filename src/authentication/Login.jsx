@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import Lottie from "lottie-react";
 import animation from "../assets/animation/animation_lk5um5zg.json";
 
 const Login = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => console.log(data);
   return (
     <div>
       <div>
@@ -15,59 +18,44 @@ const Login = () => {
               {/* lottie  */}
               <div className="flex items-center ">
                 <Lottie
-                  className="w-96 ml-60"
+                  className="w-88 ml-60"
                   animationData={animation}
                   loop={true}
                 />
               </div>
 
-              <form>
-                <div className="grid grid-cols-1">
-                  <div className="mt-8">
+              <div className="mt-20">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  {/* email filed  */}
+
+                  <div className="form-control w-full max-w-xs">
                     <label className="label">
-                      <span className="label-text">What is your name?</span>
+                      <span className="label-text">Your Email</span>
                     </label>
                     <input
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                      className="input input-bordered input-primary w-full max-w-xs "
+                      type="email"
+                      className="input input-bordered w-full max-w-xs"
+                      {...register("email")}
                     />
                   </div>
-                  <div className="mt-1">
+                  {/* password filed  */}
+                  <div className="form-control w-full max-w-xs">
                     <label className="label">
-                      <span className="label-text"> Your Email?</span>
+                      <span className="label-text">Your Password</span>
                     </label>
                     <input
-                      name="email"
-                      type="text"
-                      placeholder="Your Email"
-                      className="input input-bordered input-primary w-full max-w-xs "
+                      type="password"
+                      className="input input-bordered w-full max-w-xs"
+                      {...register("password")}
                     />
                   </div>
-                  <div className="mt-1">
-                    <label className="label">
-                      <span className="label-text"> Your password?</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="password"
-                      placeholder="Your Password"
-                      className="input input-bordered input-primary w-full max-w-xs "
-                    />
-                  </div>
-                </div>
-                <p className="font-normal text-sm mt-1">
-                  {" "}
-                  Create an Account? <Link to="/signup">SignUp</Link>
-                </p>
-                <button
-                  type="submit"
-                  className="text-sm mt-6  w-1/2 mx-auto border-b-2  btn btn-primary "
-                >
-                  Sign Up
-                </button>
-              </form>
+
+                  <input
+                    type="submit"
+                    className="text-sm mt-6  w-1/2 mx-auto border-b-2  btn btn-primary "
+                  />
+                </form>
+              </div>
             </div>
           </div>
         </div>
