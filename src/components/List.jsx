@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const List = () => {
   return (
-    <div className="bg-white w-full min-h-[30rem] flex flex-col justify-between rounded-lg p-6">
+    <div className="bg-white w-full min-h-[30rem] flex flex-col justify-between rounded-lg p-6 ">
       <div className="mb-4 text-center text-black mt-4 font-bold text-2xl">
         Lists
       </div>

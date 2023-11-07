@@ -1,11 +1,53 @@
 import { useForm } from "react-hook-form";
 import Lottie from "lottie-react";
 import animation from "../assets/animation/animation_lk5um5zg.json";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch(
+        " https://red-green-task-server.vercel.app/api/v1/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      console
+        .log(response)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.success === true) {
+            Swal.fire({
+              title: data.status,
+              icon: data.status,
+              confirmButtonColor: "var(--primary-color)",
+              confirmButtonText: "OK",
+              text: `${data.message}`,
+            });
+            console.log("User data sent successfully:", data);
+          } else {
+            Swal.fire({
+              title: data.status,
+              icon: data.status,
+              confirmButtonColor: "var(--primary-color)",
+              confirmButtonText: "OK",
+              text: `${data.message}`,
+            });
+          }
+        });
+    } catch (error) {
+      // Handle network errors or other exceptions
+      console.error("Error:", error.message);
+    }
+  };
   return (
     <div>
       <div>
@@ -49,7 +91,9 @@ const Login = () => {
                       {...register("password")}
                     />
                   </div>
-
+                  <p>
+                    create an account? <Link to="/signup">Signup</Link>{" "}
+                  </p>
                   <input
                     type="submit"
                     className="text-sm mt-6  w-1/2 mx-auto border-b-2  btn btn-primary "

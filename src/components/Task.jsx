@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+// import TaskTable from "./TaskTable";
 
 const Task = () => {
   return (
@@ -8,8 +9,9 @@ const Task = () => {
           Tasks
         </div>
         <div>
-          <p className="mb-60 text-center">There have no task yes.</p>
+          <p className="mb-60 text-center">There have no task yet.</p>
         </div>
+        <div>{/* <TaskTable></TaskTable> */}</div>
         <div className="mx-auto mb-4">
           <Link to="/create-new-list">
             {" "}
